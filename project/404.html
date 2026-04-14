@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Медиасок</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div data-layout-header></div>
+    <main class="page-content page-404">
+      <div class="page-404__box">
+        <h1>Страница не найдена</h1>
+        <a class="btn btn-primary" href="/">Вернуться на главную</a>
+      </div>
+    </main>
+    <div data-layout-footer></div>
+  </div>
+
+  <script src="/js/core/data.js"></script>
+  <script src="/js/core/utils.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/storage.js"></script>
+  <script src="/js/core/ui.js"></script>
+  <script src="/js/core/layout.js"></script>
+  <script src="/js/core/templates.js"></script>
+  <script src="/js/core/app.js"></script>
+  <script>
+    MediaSok.mountLayout({ hero: 'simple', title: 'Страница не найдена' });
+  </script>
+</body>
+</html>

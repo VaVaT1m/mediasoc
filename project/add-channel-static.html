@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Добавить канал — Медиасок</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/add-channel-exact.css">
+  
+</head>
+<body class="add-channel-page-exact">
+  <div class="page-shell">
+    <div data-layout-header></div>
+
+    <main class="page-content exact-add-page">
+      <section class="exact-add-wrap">
+        <div id="moderation-notice" class="notice hidden"></div>
+        <form id="channel-form" class="exact-add-form" novalidate>
+          <div class="exact-add-scaler">
+            <div class="exact-add-canvas" id="exact-add-canvas">
+              <button type="button" id="open-stock-modal" class="exact-logo-button" aria-label="Выбрать логотип">
+                <img id="logo-preview" src="/assets/form-screen/vector-placeholder.png" alt="Логотип проекта">
+              </button>
+              <input id="logo-file-input" type="file" accept=".png,.jpg,.jpeg" class="hidden">
+
+              <label class="exact-name-field" for="name-input">
+                <input id="name-input" name="name" minlength="3" maxlength="85" required placeholder="Введите название">
+                <span class="exact-required">*</span>
+              </label>
+
+              <section class="exact-section exact-section--links-project">
+                <h2 class="exact-section-title"><img src="/assets/form-screen/link-icon.png" alt="">Ссылки на ресурсы<span>*</span></h2>
+                <button type="button" id="project-links-summary" class="exact-summary-trigger">Ссылки на каналы</button>
+              </section>
+
+              <section class="exact-section exact-section--contest">
+                <h2 class="exact-section-title"><img src="/assets/form-screen/contest-icon.png" alt="">Конкурс<span>*</span></h2>
+                <div id="contest-list" class="exact-option-panel exact-option-panel--contest"></div>
+              </section>
+
+              <section class="exact-section exact-section--category">
+                <h2 class="exact-section-title"><img src="/assets/form-screen/category-icon.png" alt="">Категория<span>*</span></h2>
+                <div id="category-list" class="exact-option-panel"></div>
+                              </section>
+
+              <section class="exact-section exact-section--nomination">
+                <h2 class="exact-section-title"><img src="/assets/form-screen/category-icon.png" alt="">Номинация</h2>
+                <div id="nomination-list" class="exact-option-panel"></div>
+              </section>
+
+              <section class="exact-section exact-section--implementation">
+                <h2 class="exact-section-title"><img src="/assets/form-screen/implementation-icon.png" alt="">Реализация</h2>
+                <div class="exact-realization-box">
+                  <label class="exact-pill is-active"><input type="radio" name="implementation-main" value="Реализуется" checked><span>Реализуется</span></label>
+                  <label class="exact-pill"><input type="radio" name="implementation-main" value="Реализован"><span>Реализован</span></label>
+                  <label class="exact-pill"><input type="radio" name="implementation-main" value="Бессрочно"><span>Бессрочный</span></label>
+                </div>
+                <div id="implementation-dates" class="exact-dates-box hidden">
+                  <label class="exact-date-field"><span>Дата начала проекта</span><input id="start-date" type="date"></label>
+                  <label class="exact-date-field"><span>Дата завершения проекта</span><input id="end-date" type="date"></label>
+                </div>
+              </section>
+
+              <section class="exact-section exact-section--region">
+                <h2 class="exact-section-title"><img src="/assets/form-screen/region-icon.png" alt="">Регионы реализации<span>*</span></h2>
+                <button type="button" id="region-summary" class="exact-summary-trigger">Выберите регионы реализации</button>
+                <div id="region-dropdown" class="exact-region-dropdown hidden">
+                  <input id="region-search-input" type="search" class="exact-region-custom-input" placeholder="Поиск региона">
+                  <div id="regions-grid" class="exact-region-list"></div>
+                  <div class="exact-region-custom"><button type="button" id="add-custom-region" class="exact-region-custom-button">Закрыть</button></div>
+                </div>
+              </section>
+
+              <label class="exact-textarea exact-textarea--full" for="full-description"><span class="exact-textarea-title">Полное описание</span><textarea id="full-description" maxlength="1000" placeholder="Подробное описание (для страницы)"></textarea></label>
+              <label class="exact-textarea exact-textarea--short is-required" for="short-description"><span class="exact-textarea-title">Краткое описание</span><textarea id="short-description" maxlength="150" required placeholder="Кратко о проекте (для карточки)"></textarea><span class="exact-required">*</span></label>
+
+              <button type="button" class="exact-avatar exact-avatar--author" data-toggle-author-visibility aria-label="Переключить видимость автора">
+                <img src="/assets/form-screen/author-icon.png" alt="">
+              </button>
+              <input id="author-name" class="exact-line-input exact-line-input--author" placeholder="ФИО автора проекта" maxlength="120">
+              <button type="button" class="exact-link-select exact-link-select--author" data-toggle-links="author" aria-expanded="false">Ссылки<span class="exact-caret" aria-hidden="true"></span></button>
+              <div class="exact-links-stack exact-links-stack--author">
+                <div class="exact-link-row"><span class="exact-link-badge exact-link-badge--icon"><img src="/assets/add-links/tg.png" alt=""></span><input id="author-telegram" data-link-type="telegram" placeholder="Ссылка" maxlength="255"></div>
+                <div class="exact-link-row"><span class="exact-link-badge exact-link-badge--icon"><img src="/assets/add-links/vk.png" alt=""></span><input id="author-vk" data-link-type="vk" placeholder="Ссылка" maxlength="255"></div>
+                <div class="exact-link-row"><span class="exact-link-badge exact-link-badge--icon"><img src="/assets/add-links/site.png" alt=""></span><input id="author-site" data-link-type="site" placeholder="Ссылка" maxlength="255"></div>
+              </div>
+
+              <div class="hidden" id="author-visibility-field">
+                <input type="radio" name="author-visible" value="show" checked>
+                <input type="radio" name="author-visible" value="hide">
+              </div>
+
+              <div class="exact-avatar exact-avatar--contact" aria-hidden="true">
+                <img src="/assets/form-screen/contact-icon.png" alt="">
+              </div>
+              <label class="exact-line-label exact-line-label--contact" for="contact-name">
+                <input id="contact-name" class="exact-line-input exact-line-input--contact" placeholder="Контакт для связи" maxlength="120" required>
+                <span class="exact-required">*</span>
+              </label>
+              <button type="button" class="exact-link-select exact-link-select--contact" data-toggle-links="contact" aria-expanded="false">Ссылки<span class="exact-caret" aria-hidden="true"></span><i class="exact-required">*</i></button>
+              <div class="exact-links-stack exact-links-stack--contact">
+                <div class="exact-link-row"><span class="exact-link-badge exact-link-badge--icon"><img src="/assets/add-links/tg.png" alt=""></span><input id="contact-telegram" data-link-type="telegram" placeholder="Ссылка" maxlength="255"></div>
+                <div class="exact-link-row"><span class="exact-link-badge exact-link-badge--icon"><img src="/assets/add-links/vk.png" alt=""></span><input id="contact-vk" data-link-type="vk" placeholder="Ссылка" maxlength="255"></div>
+                <div class="exact-link-row"><span class="exact-link-badge exact-link-badge--icon"><img src="/assets/add-links/site.png" alt=""></span><input id="contact-email" data-link-type="email" placeholder="Ссылка" maxlength="255"></div>
+              </div>
+              <input id="contact-phone" class="hidden" data-link-type="phone" maxlength="32">
+
+              <div class="exact-captcha-wrap">
+                <div class="exact-captcha-note">Пройдите проверку, чтобы подтвердить, что вы не робот.</div>
+                <div id="captcha-container" class="smart-captcha" data-sitekey="ysc1_dr1FjZnPraahNrROHIdAKaSJXdSIBJCK6BAbJvJZ96b6679e" style="height:100px"></div>
+              </div>
+
+              <label class="exact-agreement exact-agreement--first"><input id="agreement-1" type="checkbox"><span>Я принимаю условия <a href="/docs/user-agreement.pdf" target="_blank" rel="noopener noreferrer">Пользовательского соглашения</a> </span></label>
+              <label class="exact-agreement exact-agreement--second"><input id="agreement-2" type="checkbox"><span>Я даю отдельное согласие на распространение моих персональных данных (включая контактную информацию) путём размещения в открытом доступе на сайте https://mediasoc.ru</span></label>
+
+              <button class="exact-save-button" type="submit" id="submit-form-button">Отправить на модерацию</button>
+              <div id="form-errors" class="hidden exact-errors exact-errors--bottom"></div>
+              <div id="form-hint" class="exact-form-hint" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <input id="contest-select" class="hidden" aria-hidden="true">
+          <input id="contest-custom" class="hidden" maxlength="120">
+          <input id="category-select" class="hidden" aria-hidden="true">
+          <input id="category-custom" class="hidden" maxlength="120">
+          <input id="region-input" class="hidden" aria-hidden="true">
+          <input id="nomination-input" class="hidden" maxlength="25">
+          <input id="nomination-custom" class="hidden" maxlength="25">
+          <input id="project-telegram" class="hidden" data-link-type="telegram" maxlength="255">
+          <input id="project-vk" class="hidden" data-link-type="vk" maxlength="255">
+          <input id="project-youtube" class="hidden" data-link-type="youtube" maxlength="255">
+          <input id="project-site" class="hidden" data-link-type="site" maxlength="255">
+        </form>
+      </section>
+    </main>
+
+    <div data-layout-footer></div>
+  </div>
+
+  <div id="stock-modal" class="image-modal">
+    <div class="image-modal__backdrop" data-close-stock></div>
+    <div class="image-modal__panel exact-stock-panel">
+            <div class="exact-stock-upload-row">
+        <label class="btn btn-primary exact-stock-upload" for="logo-file-input">Загрузить с устройства</label>
+      </div>
+      <div class="exact-stock-separator">или</div>
+      <div class="exact-stock-subtitle">Выбрать из стоковых</div>
+      <div id="stock-grid" class="stock-grid"></div>
+      <div class="modal__actions exact-stock-actions">
+        <button class="btn btn-primary exact-stock-save" id="apply-stock-button" type="button">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="project-links-modal" class="exact-floating-modal hidden">
+    <div class="exact-floating-modal__backdrop" data-close-project-links></div>
+    <div class="exact-floating-modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title">Ссылки проекта</h2>
+      </div>
+      <div class="exact-floating-grid">
+        <input id="project-telegram-visible" data-sync-target="project-telegram" data-link-type="telegram" class="input" maxlength="255" placeholder="Telegram: @name или https://t.me/...">
+        <input id="project-vk-visible" data-sync-target="project-vk" data-link-type="vk" class="input" maxlength="255" placeholder="VK: @name или https://vk.com/...">
+        <input id="project-youtube-visible" data-sync-target="project-youtube" data-link-type="youtube" class="input" maxlength="255" placeholder="YouTube: https://youtube.com/...">
+        <input id="project-site-visible" data-sync-target="project-site" data-link-type="site" class="input" maxlength="255" placeholder="Сайт: https://example.com">
+      </div>
+      <div class="modal__actions" style="justify-content:center; margin-top:18px;">
+        <button class="btn btn-primary" type="button" data-close-project-links>Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="author-links-modal" class="exact-floating-modal hidden">
+    <div class="exact-floating-modal__backdrop" data-close-author-links></div>
+    <div class="exact-floating-modal__panel">
+      <div class="modal__header"><h2 class="modal__title">Ссылки автора</h2></div>
+      <div class="exact-floating-grid">
+        <input id="author-telegram-visible" data-sync-target="author-telegram" data-link-type="telegram" class="input" maxlength="255" placeholder="Telegram: @name или https://t.me/...">
+        <input id="author-vk-visible" data-sync-target="author-vk" data-link-type="vk" class="input" maxlength="255" placeholder="VK: @name или https://vk.com/...">
+        <input id="author-site-visible" data-sync-target="author-site" data-link-type="site" class="input" maxlength="255" placeholder="Сайт: https://example.com">
+      </div>
+      <div class="modal__actions" style="justify-content:center; margin-top:18px;"><button class="btn btn-primary" type="button" data-close-author-links>Сохранить</button></div>
+    </div>
+  </div>
+
+  <div id="contact-links-modal" class="exact-floating-modal hidden">
+    <div class="exact-floating-modal__backdrop" data-close-contact-links></div>
+    <div class="exact-floating-modal__panel">
+      <div class="modal__header"><h2 class="modal__title">Контакты</h2></div>
+      <div class="exact-floating-grid">
+        <input id="contact-telegram-visible" data-sync-target="contact-telegram" data-link-type="telegram" class="input" maxlength="255" placeholder="Telegram: @name или https://t.me/...">
+        <input id="contact-vk-visible" data-sync-target="contact-vk" data-link-type="vk" class="input" maxlength="255" placeholder="VK: @name или https://vk.com/...">
+        <input id="contact-email-visible" data-sync-target="contact-email" data-link-type="email" class="input" maxlength="255" placeholder="Email: name@example.com">
+        <input id="contact-phone-visible" data-sync-target="contact-phone" data-link-type="phone" class="input" maxlength="32" placeholder="Телефон: +7...">
+      </div>
+      <div class="modal__actions" style="justify-content:center; margin-top:18px;"><button class="btn btn-primary" type="button" data-close-contact-links>Сохранить</button></div>
+    </div>
+  </div>
+
+  <div id="success-modal" class="success-modal">
+    <div class="success-modal__backdrop"></div>
+    <div class="success-modal__panel">
+      <h2 class="modal__title">Заявка отправлена</h2>
+      <p>Ваш проект отправлен на модерацию. Изменить данные можно только после согласования с модератором.</p>
+            <div class="modal__actions" style="justify-content:center;">
+        <a class="btn btn-primary" href="/">На главную</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/core/data.js"></script>
+  <script src="/js/core/utils.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/storage.js"></script>
+  <script src="/js/core/ui.js"></script>
+  <script src="/js/core/layout.js"></script>
+  <script src="/js/core/templates.js"></script>
+  <script src="/js/core/app.js"></script>
+  <script src="/js/add-channel/context.js"></script>
+  <script src="/js/add-channel/renderers.js"></script>
+  <script src="/js/add-channel/submission.js"></script>
+  <script src="/js/add-channel.js"></script>
+</body>
+</html>

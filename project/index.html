@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Медиасок</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="enable-scroll-topbar home-page">
+  <div class="page-shell">
+    <div data-layout-header></div>
+    <main class="page-content">
+      <section class="search-section">
+        <div class="container">
+          <div class="search-row">
+            <div class="search-box">
+              <input id="catalog-search" type="search" placeholder="Поиск по названию или описанию…">
+              <button id="catalog-search-button" type="button" aria-label="Искать"></button>
+            </div>
+            <a class="btn btn-outline" href="/add-channel">Добавить проект</a>
+            <button id="open-filter-modal" class="btn filter-button" type="button">Фильтры</button>
+          </div>
+        </div>
+      </section>
+<section class="section">
+        <div class="container">
+          <div id="catalog-root" class="catalog-grid"></div>
+          <div id="empty-root" class="hidden"></div>
+          <div id="show-more-row" class="center-row section hidden">
+            <button id="show-more-button" class="btn btn-primary" type="button">Показать ещё</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div data-layout-footer></div>
+  </div>
+
+  <div id="filter-modal" class="filter-modal">
+    <div class="filter-modal__backdrop" data-close-filter></div>
+    <div class="filter-modal__panel">
+      <div class="filter-modal__header">
+        <h2 class="filter-modal__title">Фильтры</h2>
+        <button class="btn btn-secondary btn-small" type="button" data-close-filter>Закрыть</button>
+      </div>
+      <div class="filter-modal__grid">
+        <div class="field">
+          <label for="filter-contest">Конкурс</label>
+          <select id="filter-contest" class="select"></select>
+        </div>
+        <div class="field">
+          <label for="filter-category">Категория</label>
+          <select id="filter-category" class="select"></select>
+        </div>
+        <div class="field span-2">
+          <label for="filter-region-search">Регион</label>
+          <input id="filter-region-search" class="input" type="search" placeholder="Поиск региона">
+          <div id="filter-region-list" class="region-selector region-selector--dropdown"></div>
+        </div>
+        <div class="field span-2">
+          <label>Режимы фильтрации по региону</label>
+          <div class="inline-row">
+            <label class="radio-pill is-active" data-mode-pill>
+              <input type="radio" name="region-mode" value="strict" checked>
+              Только выбранные регионы
+            </label>
+            <label class="radio-pill" data-mode-pill>
+              <input type="radio" name="region-mode" value="soft">
+              В том числе выбранные регионы
+            </label>
+          </div>
+        </div>
+        <div class="field span-2">
+          <label>Статус проекта</label>
+          <div class="inline-row">
+            <label class="radio-pill" data-status-pill><input type="radio" name="implementation" value="">Все</label>
+            <label class="radio-pill" data-status-pill><input type="radio" name="implementation" value="Реализуется">Реализуется</label>
+            <label class="radio-pill" data-status-pill><input type="radio" name="implementation" value="Реализован">Реализован</label>
+            <label class="radio-pill" data-status-pill><input type="radio" name="implementation" value="Бессрочно">Бессрочный</label>
+          </div>
+        </div>
+      </div>
+      <div class="filter-modal__actions">
+        <button id="reset-filters-button" class="btn btn-secondary" type="button">Сбросить</button>
+        <button id="apply-filters-button" class="btn btn-primary" type="button">Применить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/core/data.js"></script>
+  <script src="/js/core/utils.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/storage.js"></script>
+  <script src="/js/core/ui.js"></script>
+  <script src="/js/core/layout.js"></script>
+  <script src="/js/core/templates.js"></script>
+  <script src="/js/core/app.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

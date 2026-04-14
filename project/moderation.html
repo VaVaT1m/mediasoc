@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Модерация — Медиасок</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div data-layout-header></div>
+    <main class="page-content">
+      <section class="container section">
+        <div id="moderation-login" class="login-shell">
+          <h1 class="modal__title">Вход для модератора</h1>
+          <p class="notice">Используется логин/пароль из moderators.txt. После входа доступны заявки на модерацию и уже опубликованные проекты.</p>
+          <form id="login-form" class="form-grid">
+            <div class="field span-2">
+              <label for="login-input">Логин</label>
+              <input id="login-input" class="input" autocomplete="username">
+            </div>
+            <div class="field span-2">
+              <label for="password-input">Пароль</label>
+              <input id="password-input" type="password" class="input" autocomplete="current-password">
+            </div>
+            <div class="field span-2">
+              <div class="form-actions" style="margin-top:0; justify-content:space-between;">
+                <button class="btn btn-secondary" type="button" id="fill-demo-login">Подставить demo</button>
+                <button class="btn btn-primary" type="submit">Войти</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div id="moderation-app" class="moderation-shell hidden">
+          <div class="modal__header">
+            <h1 class="modal__title">Система модерации</h1>
+            <div class="inline-row">
+              <a class="btn btn-secondary" href="/add-channel?mode=moderation">Новая редактура</a>
+              <button class="btn btn-danger" id="logout-button" type="button">Выйти</button>
+            </div>
+          </div>
+          <div class="tab-row">
+            <button class="tab-button is-active" data-mod-tab="pending" type="button">Ожидают модерации</button>
+            <button class="tab-button" data-mod-tab="approved" type="button">Уже добавленные</button>
+          </div>
+          <div id="moderation-root" class="moderation-grid"></div>
+          <div id="moderation-empty" class="hidden"></div>
+        </div>
+      </section>
+    </main>
+    <div data-layout-footer></div>
+  </div>
+
+  <script src="/js/core/data.js"></script>
+  <script src="/js/core/utils.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/storage.js"></script>
+  <script src="/js/core/ui.js"></script>
+  <script src="/js/core/layout.js"></script>
+  <script src="/js/core/templates.js"></script>
+  <script src="/js/core/app.js"></script>
+  <script src="/js/moderation.js"></script>
+</body>
+</html>
