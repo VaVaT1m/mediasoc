@@ -109,4 +109,11 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`API listening on ${PORT}`));
+const HOST = '0.0.0.0';
+
+const server = app.listen(PORT, HOST, () => {
+  console.log(`API listening on ${PORT}`);
+});
+
+server.keepAliveTimeout = 120000;
+server.headersTimeout = 121000;
