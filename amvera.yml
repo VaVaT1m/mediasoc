@@ -5,6 +5,6 @@ meta:
     version: 18
 
 run:
-  command: cd backend && npm start
+  command: npm start
   containerPort: 3000
   persistenceMount: /data
